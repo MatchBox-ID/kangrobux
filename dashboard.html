@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Top-up Robux</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .faq-container {
+            max-width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-question {
+            cursor: pointer;
+        }
+
+        /* Style untuk ikon panah bawah */
+        .arrow-icon {
+            font-size: 16px;
+            margin-left: 5px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Style untuk konten jawaban */
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* Style untuk overlay belakang saat popup aktif */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+        /* CSS untuk styling dashboard */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .dashboard-container {
+            background-color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Style untuk ikon Roblox */
+        .roblox-icon {
+            font-size: 36px;
+            color: #ff5700;
+            margin-right: 10px;
+        }
+        /* CSS untuk tabel papan peringkat */
+.top-purchases-table {
+    width: 100%;
+    border-collapse: collapse; /* Menyatukan garis sel dalam satu garis */
+}
+
+.top-purchases-table th,
+.top-purchases-table td {
+    border: 1px solid #ddd; /* Menambahkan garis pada sel */
+    padding: 8px;
+    text-align: left;
+}
+
+.top-purchases-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .history-table {
+            width: 85%;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        .history-table th,
+        .history-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .history-table th {
+            background-color: #f2f2f2;
+        }
+
+        .history-table tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Style untuk ikon "Detail" */
+        .detail-icon {
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        /* Style untuk kotak detail pembelian yang muncul saat diklik */
+        .purchase-details {
+            display: none;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        /* Style untuk tombol "Tutup" pada kotak detail */
+        .close-button {
+            float: right;
+            cursor: pointer;
+        }
+
+        /* Style untuk overlay belakang saat kotak detail aktif */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+       .dashboard-container {
+            background-color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Style untuk ikon Roblox */
+        .roblox-icon {
+            font-size: 36px;
+            color: #ff5700;
+            margin-right: 10px;
+        }
+
+        /* Style untuk saldo */
+        .saldo-container {
+            margin-top: 20px;
+        }
+
+        .saldo-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .saldo-amount {
+            font-size: 24px;
+            color: #007bff;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        /* Style untuk tombol "Tambah Saldo" */
+        .add-balance-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        /* CSS untuk tombol kustom */
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 40%;
+    possition: left;
+}
+
+.custom-button:hover {
+    background-color: #0056b3;
+}
+.custom-button-1 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 90%;
+}
+
+.custom-button-1:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div>
+            <center><h2>KangRobux</h2></center>
+        </div>
+    </div><br>
+    <center><a href="./login"><button class="custom-button">Log Out</button></a>&emsp;&emsp;<a href="./index"><button class="custom-button">Home</button></a><br><br><a href="./dashboard"><button class="custom-button-1">Dashboard</button></a></center>
+
+    <!-- Konten halaman dashboard -->
+    <div class="dashboard-container">
+        <h2 class="dashboard-title"><p>Selamat datang, <span id="user-name"></span> User!</p>
+</h2>
+    </div>
+   
+   <div class="dashboard-container">
+         <center><h2 class="dashboard-title">Histori Pembelian</h2></center>
+         <table class="history-table">
+        <thead>
+            <tr>
+                <th>Tanggal</th>
+                <th>Jumlah</th>
+                <th>Harga</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tidak Ada Data</td>
+                <td>Tidak Ada Data</td>
+                <td>Tidak Ada Data</td>
+            </tr>
+            </table>
+   </div>
+   <div class="dashboard-container">
+         <center><h2 class="dashboard-title"></h2></center>
+         <table class="history-table">
+        <thead>
+            <tr>
+                <th>Tanggal</th>
+                <th>Jumlah</th>
+                <th>Harga</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tidak Ada Data</td>
+                <td>Tidak Ada Data</td>
+                <td>Tidak Ada Data</td>
+            </tr>
+            </table>
+   </div>
+        <div class="dashboard-container">
+        <div class="saldo-container" id="saldo-container">
+            <h2 class="saldo-title">Total Pembelian Robux :</h2>
+            <div class="saldo-amount" id="saldo-amount">
+      </div>
+    </div>
+    </div>
+ <div class="dashboard-container">
+        <center><h2 class="dashboard-title">Top 10 User</h2></center>
+            <br>
+<div class="top-purchases">
+    <h3 class="top-purchases-title">Peringkat Pembelian Terbanyak</h3>
+    <table class="top-purchases-table">
+        <thead>
+            <tr>
+                <th>Peringkat</th>
+                <th>Nama Pengguna</th>
+                <th>Jumlah Robux</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Wah****</td>
+                <td>R$185762</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Wolf*****</td>
+                <td>R$82871</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Rus*****</td>
+                <td>R$48726</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Gen*****</td>
+                <td>R$39527</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Ryo*****</td>
+                <td>R$37265</td>
+            </tr>
+             <tr>
+                <td>6</td>
+                <td>Pro*****</td>
+                <td>R$35820</td>
+            </tr>
+             <tr>
+                <td>7</td>
+                <td>YTP*****</td>
+                <td>R$26527</td>
+            </tr>
+             <tr>
+                <td>8</td>
+                <td>FigH*****</td>
+                <td>R$24885</td>
+            </tr>
+             <tr>
+                <td>9</td>
+                <td>Spr*****</td>
+                <td>R$21746</td>
+            </tr>
+             <tr>
+                <td>10</td>
+                <td>Cur*****</td>
+                <td>R$18732</td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+             <div class="dashboard-container">
+        <h2>Pertanyaan Umum (FAQ)</h2>
+        <!-- Pertanyaan 1 -->
+        <div class="faq-question">
+            <strong>Pertanyaan 1:</strong> Apa itu Robux?
+            <i class="fas fa-caret-down arrow-icon"></i>
+        </div>
+        <div class="faq-answer">
+            Robux adalah mata uang virtual dalam Roblox yang digunakan untuk membeli item dalam permainan, avatar, dan lainnya.
+        </div><br>
+
+        <!-- Pertanyaan 2 -->
+        <div class="faq-question">
+            <strong>Pertanyaan 2:</strong> Bagaimana cara top-up Robux?
+            <i class="fas fa-caret-down arrow-icon"></i>
+        </div>
+        <div class="faq-answer">
+            Anda dapat melakukan top-up Robux melalui situs web kami dengan mengikuti langkah-langkah yang ada pada halaman top-up.
+        </div><br>
+        
+         <!-- Pertanyaan 2 -->
+        <div class="faq-question">
+            <strong>Pertanyaan 3:</strong> Payment apa saja yang bisa saya gunakan?
+            <i class="fas fa-caret-down arrow-icon"></i>
+        </div>
+        <div class="faq-answer">
+            Anda dapat menggunakan payment Dana, Ovo, Gopay, Qris, Shopeepay, BNI, dan BRI yang sudah dapat anda gunakan saat ini!.
+        </div><br>
+        
+         <!-- Pertanyaan 2 -->
+        <div class="faq-question">
+            <strong>Pertanyaan 4:</strong> Berapa lama robux masuk ke akun saya?
+            <i class="fas fa-caret-down arrow-icon"></i>
+        </div>
+        <div class="faq-answer">
+            Robux anda akan masuk dalam waktu 5x24 jam setelah pembayaran berhasil dilakukan, alasan robux lama masuk nya adalah karena robux harus melewati bagian pending robux dan anda dapat melihat rangkaian transaksi di <a href="https://roblox.com/transaction">roblox.com/transaction</a>.
+        </div>
+    </div>
+            <div class="dashboard-container">
+            <center><footer>&copy; 2023 KangRobux</footer></center>
+            </div>
+    <script>
+        // Fungsi untuk menambahkan saldo saat tombol "Tambah Saldo" ditekan
+        function tambahSaldo() {
+            const nominalInput = document.getElementById('nominal');
+            const saldoForm = document.getElementById('saldo-form');
+            const saldoContainer = document.getElementById('saldo-container');
+            const saldoAmount = document.getElementById('saldo-amount');
+
+            // Mendapatkan nilai nominal dari input
+            const nominal = parseFloat(nominalInput.value);
+
+            // Validasi nilai nominal
+            if (isNaN(nominal) || nominal <= 100) {
+                alert('Nominal harus berupa angka positif.');
+                return;
+            }
+
+            // Simulasikan penambahan saldo (ganti dengan logika aktual)
+            // Di sini Anda dapat mengirimkan permintaan ke server untuk menambahkan saldo pengguna.
+            // Misalnya, Anda dapat menggunakan teknologi seperti AJAX atau Fetch API.
+
+            // Simulasi berhasil, saldo ditambahkan
+            alert('Saldo berhasil ditambahkan: ' + nominal + ' Robux');
+            // Update saldo yang ditampilkan
+            const saldoAwal = parseFloat(localStorage.getItem('saldo')) || 100;
+            const saldoBaru = saldoAwal + nominal;
+            saldoAmount.textContent = saldoBaru + ' Robux';
+            
+            // Tampilkan bagian saldo
+            saldoContainer.style.display = 'block';
+
+            // Simpan saldo di localStorage
+            localStorage.setItem('saldo', saldoBaru);
+
+            // Anda dapat mengatur ulang formulir atau melakukan tindakan lain yang sesuai
+            saldoForm.reset();
+        }
+
+        // Fungsi untuk mengambil dan menampilkan saldo dari localStorage saat halaman dimuat
+        function tampilkanSaldoAwal() {
+            const saldoAmount = document.getElementById('saldo-amount');
+            const saldoAwal = parseFloat(localStorage.getItem('saldo')) || 100;
+            saldoAmount.textContent = saldoAwal + ' Robux';
+
+            // Jika saldo lebih dari nol, tampilkan bagian saldo
+            if (saldoAwal > 100) {
+                const saldoContainer = document.getElementById('saldo-container');
+                saldoContainer.style.display = 'block';
+            }
+        }
+
+        // Panggil fungsi tampilkanSaldoAwal saat halaman dimuat
+        tampilkanSaldoAwal();
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script>
+        // Fungsi untuk menampilkan jawaban saat pertanyaan diklik
+        function toggleAnswer(question) {
+            const answer = question.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+
+            const arrowIcon = question.querySelector('.arrow-icon');
+            arrowIcon.style.transform = answer.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        // Mendengarkan klik pada pertanyaan
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach((question) => {
+            question.addEventListener('click', () => {
+                toggleAnswer(question);
+            });
+        });
+    function getSaldoPengguna() {
+            // Gantilah dengan logika untuk mengambil saldo pengguna dari sumber data yang sesuai
+            return 0; // Contoh saldo pengguna
+        }
+
+        // Set saldo pengguna pada elemen HTML
+        const saldoAmount = document.querySelector('.saldo-amount');
+        const saldo = getSaldoPengguna();
+        saldoAmount.textContent = saldo + ' Robux'; // Tampilkan saldo dengan format yang sesuai
+        function tambahSaldo() {
+            const nominalInput = document.getElementById('nominal');
+            const saldoForm = document.getElementById('saldo-form');
+            const saldoContainer = document.getElementById('saldo-container');
+            const saldoAmount = document.getElementById('saldo-amount');
+
+            // Mendapatkan nilai nominal dari input
+            const nominal = parseFloat(nominalInput.value);
+
+            // Validasi nilai nominal
+            if (isNaN(nominal) || nominal <= 0) {
+                alert('Nominal harus berupa angka positif.');
+                return;
+            }
+
+            // Simulasikan penambahan saldo (ganti dengan logika aktual)
+            // Di sini Anda dapat mengirimkan permintaan ke server untuk menambahkan saldo pengguna.
+            // Misalnya, Anda dapat menggunakan teknologi seperti AJAX atau Fetch API.
+
+            // Simulasi berhasil, saldo ditambahkan
+            alert('Saldo berhasil ditambahkan: ' + nominal + ' Robux');
+            // Update saldo yang ditampilkan
+            saldoAmount.textContent = (parseFloat(saldoAmount.textContent) + nominal) + ' Robux';
+            
+            // Tampilkan bagian saldo
+            saldoContainer.style.display = 'block';
+
+            // Anda dapat mengatur ulang formulir atau melakukan tindakan lain yang sesuai
+            saldoForm.reset();
+        }
+    </script>
+</body>
+</html>
