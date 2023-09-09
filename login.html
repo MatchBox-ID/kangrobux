@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Top-up Roblox</title>
+    <!-- Tautan Font Awesome untuk ikon Roblox -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"> 
+
+    <style>
+        /* Gaya dasar popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .auth-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        .auth-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .auth-form input[type="text"],
+        .auth-form input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .auth-form button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .auth-form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style untuk ikon Roblox */
+        .roblox-icon {
+            font-size: 48px;
+            color: #ff5700;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="roblox-icon">
+           <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="IconChangeColor" height="100" width="100"><title>Roblox</title><path d="m13.383 14.341-3.726-.958.959-3.726 3.726.959-.96 3.726zM4.913 0 0 19.088 19.088 24 24 4.912 4.912 0z" id="mainIconPathAttribute" fill="#007bff" stroke-width="0" stroke="#ff0000"></path></svg>
+        </div>
+        <h2>Login - KangRobux</h2>
+        <form class="auth-form" id="login-form">
+            <input type="text" placeholder="Username" id="username" for="username" required>
+            <input type="password" placeholder="Password" id="password" for="password" required>
+            <a href="dashboard.html"><button type="login-form">Login</button></a>
+        </form>
+        <p>Belum punya akun? <a href="./register">Daftar</a></p>
+    </div>
+    
+<script src="main.js"></script>
+    <!-- Tautan Font Awesome untuk ikon Roblox -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+
+</body>
+</html>
